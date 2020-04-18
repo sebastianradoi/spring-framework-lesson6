@@ -31,9 +31,7 @@ public class ProductService {
 	@Transactional(propagation = Propagation.NOT_SUPPORTED)
 	public void addTenProducts() {
 		Random random = new Random();
-		random.ints()
-				.filter(nr -> nr > 0 && nr < 100)
-				.limit(10)
+		random.ints(10)
 				.forEach(i -> {
 					productRepository.addProduct("Produsul-" + i, random.nextDouble());
 					if (i % 10 == 0) throw new RuntimeException(":(");
